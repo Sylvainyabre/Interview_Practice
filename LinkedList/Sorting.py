@@ -13,7 +13,12 @@ def mergeSort(arr):
     mergeSort(arr2)
     return merge(arr1, arr2, arr)
 
-
+"""
+This uses the approach of dividing and conquering.add()The array is 
+recursively split down to individual items.
+The helper function merge then scans through the array and 
+joins the items by creating the order
+"""
 def merge(arr1, arr2, arr):
     i = 0
     j = 0
@@ -58,6 +63,8 @@ def merge(arr1, arr2, arr):
 """
 arr should not contain duplicate values
 this algorithm runs in O(n^2)
+Approach: Scan through the array, between the current index and the end
+of the array,find the minimum and swap it with the current element
 
 """
 def selectionSort(arr):
@@ -83,10 +90,29 @@ def findMin(arr, i):
 
 
 def quickSort(arr):
-    pass
+    if len(arr)<=1:
+        return 
+    else:
+        pivot = arr[len(arr)-1]
+        left = []
+        right = []
+        for item in arr:
+            if item<pivot:
+                left.append(item)
+            else:
+                right.append(item)
+        left = quickSort(left)
+        right = quickSort(right) 
+        result = [*left,pivot,*right]
+        return result
+
+
+def partition(arr, low, high):
+    pivot = arr[high]
 
 
 arr = [1, 32, 100, -9, 43, -56, 23, -254, 400, -12,]
-sorted =  selectionSort(arr)#mergeSort(arr)
+# sorted =  selectionSort(arr)#mergeSort(arr)
+sorted = quickSort(arr)
 print(sorted)
 # print(findMin(arr,0))
