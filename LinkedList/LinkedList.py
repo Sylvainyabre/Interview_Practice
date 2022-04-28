@@ -1,4 +1,5 @@
 from Node import Node
+import sys
 
 
 class LinkedList:
@@ -24,7 +25,7 @@ class LinkedList:
                     # if the previous node was the tail, set tail to the new node
                     if self.tail.data == curr.data:
                         self.tail = nextNode
-                        break
+                    break
                 else:
                     curr = curr.next
 
@@ -38,7 +39,6 @@ class LinkedList:
             self.tail = newNode
             self.head = self.tail
 
-
     def insertFront(self, newKey):
         if self.head is None:
             self.head = Node(newKey, None)
@@ -50,14 +50,18 @@ class LinkedList:
     def remove(self, val):
         # special cases
         if self.head.data == val:
+            removed = self.head.data
             self.head = self.head.next
+            return removed
         # the node to remove is the tail of the list
         if self.tail.data == val:
             curr = self.head
-            while curr is not None:
+            while curr is not None and curr.next is not None:
                 if curr.next.data == self.tail.data:
+                    removed = curr.next.data
+                    curr.next = None
                     self.tail = curr
-                    break
+                    return removed
                 else:
                     curr = curr.next
 
@@ -66,11 +70,29 @@ class LinkedList:
             curr = self.head
             while curr is not None and curr.next is not None:
                 if curr.next.data == val:
+                    removed = curr.next.data
                     curr.next = curr.next.next
 
-                    break
+                    return removed
                 else:
                     curr = curr.next
+        return None
+
+    def removeFront(self):
+        curr = self.head
+        # special cases
+        if curr==None:
+            return None
+        else:
+            removed = curr.data
+            curr = curr.next 
+            self.head = curr 
+            return removed
+        
+
+
+    def isEmpty(self):
+        return self.head == None 
 
     def reverse(self):
         # iterative approach
@@ -78,26 +100,30 @@ class LinkedList:
         oldHead = self.head
         prev = None
         curr = self.head
+        nextNode = None
         while curr is not None:
+            nextNode = curr.next
             curr.next = prev
             prev = curr
-            curr = curr.next
+            curr = nextNode
 
-        self.head = oldTail
+        self.head = prev
         self.tail = oldHead
 
     def printList(self):
         curr = self.head
         while curr is not None:
-            print(curr.data)
+            suffix = "-->" if curr.next is not None else ""
+            print(curr.data, end=suffix)
             curr = curr.next
 
     def printReverse(self):
-        self.reversePrint(self,self.head)
+        self._reversePrint(self.head)
 
-    def reversePrint(self,curr):
-        if curr is not None:
-            return self.reversePrint(self,curr.next)
-        print(curr)
-
-
+    def _reversePrint(self, curr):
+        if curr is None:
+            return
+        if curr.next is not None:
+            self._reversePrint(curr.next)
+        suffix = "" if curr.data == self.head.data else "-->"
+        print(curr.data, end=suffix)
