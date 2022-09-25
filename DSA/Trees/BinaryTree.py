@@ -28,3 +28,5 @@ class BinaryTree:
 
     def invert():
         pass
+    def find(key):
+        pass

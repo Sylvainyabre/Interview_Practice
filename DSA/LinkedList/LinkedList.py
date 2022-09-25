@@ -1,18 +1,24 @@
 from Node import Node
 import sys
 
+"""A singly linked list with both a head and a tail
+
+    Returns:
+        _type_: _description_
+    """
+
 
 class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        
     """
     @params:
         - newVal: the value to insert
         - locationval: the value of the node after which we are inserting
 
     """
-
     def insertAfter(self, newKey, oldKey):
         if self.head == None:
             return
@@ -81,18 +87,16 @@ class LinkedList:
     def removeFront(self):
         curr = self.head
         # special cases
-        if curr==None:
+        if curr == None:
             return None
         else:
             removed = curr.data
-            curr = curr.next 
-            self.head = curr 
+            curr = curr.next
+            self.head = curr
             return removed
-        
-
 
     def isEmpty(self):
-        return self.head == None 
+        return self.head == None
 
     def reverse(self):
         # iterative approach
@@ -113,7 +117,7 @@ class LinkedList:
     def printList(self):
         curr = self.head
         while curr is not None:
-            suffix = "-->" if curr.next is not None else ""
+            suffix = "" if curr.next == None else "-->"
             print(curr.data, end=suffix)
             curr = curr.next
 
@@ -121,9 +125,9 @@ class LinkedList:
         self._reversePrint(self.head)
 
     def _reversePrint(self, curr):
+        suffix = "" if curr == None else "-->"
         if curr is None:
             return
         if curr.next is not None:
             self._reversePrint(curr.next)
-        suffix = "" if curr.data == self.head.data else "-->"
         print(curr.data, end=suffix)

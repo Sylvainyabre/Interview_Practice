@@ -1,10 +1,11 @@
+
 def mergeSort(arr):
     if len(arr) <= 1:
-        return 
+        return arr
 
     # dividing
     mid = len(arr)//2
-    print(min)
+    #print(min)
     arr1 = arr[:mid]
     arr2 = arr[mid:]
 
@@ -16,25 +17,16 @@ def mergeSort(arr):
 """
 This uses the approach of dividing and conquering.add()The array is 
 recursively split down to individual items.
-The helper function merge then scans through the array and 
+The helper function merge() then scans through the array and 
 joins the items by creating the order
 """
 def merge(arr1, arr2, arr):
-    i = 0
-    j = 0
-    k = 0
+    i = 0 # index in the sub-array arr1
+    j = 0 # index in sub-array  arr2 
+    k = 0 # index in the main array arr
 
 # while we have not reached the end of both arrays
     while k < len(arr):
-        # if we have reached the end of arr2 or if the
-        # ith element of arr1 is smaller than the jth element of arr2
-        # if j== len(arr2) or (i<len(arr1) and arr1[i]<arr2[j]):
-        #     arr[i+j] = arr1[i]
-        #     i +=1
-        # else:
-        #     arr[i+j] = arr2[j]
-        #     j +=1
-
         # pick from the second array if we reached the end of the first array
         if i >= len(arr1):
             arr[k] = arr2[j]
@@ -108,7 +100,7 @@ def quickSort(arr):
 
 
 def partition(arr, low, high):
-    pivot = arr[high]
+    pivot = arr[high] 
 
 
 arr = [1, 32, 100, -9, 43, -56, 23, -254, 400, -12,]
