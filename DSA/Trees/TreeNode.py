@@ -10,5 +10,4 @@ class Node:
         self.right = None
 
     def __str__(self) -> str:
-        return "  key={} data={}, left={}, right={}"
-        .format(self.key, self.value, self.left == None, self.right == None)
+        return "  key={} data={}, left={}, right={}".format(self.key, self.value, self.left == None, self.right == None)

@@ -1,11 +1,9 @@
+
+from ..LinkedList import LinkedList
+
 """
     This is a linked list  implementation of a stack with a runtime of O(1) for both push() and pop()
-    """
-
-
-from LinkedList import LinkedList
-
-
+"""
 class Stack:
     def __init__(self):
         self._stack = LinkedList()

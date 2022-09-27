@@ -1,25 +1,28 @@
-from Node import Node
-import sys
+from node import Node
 
-"""A singly linked list with both a head and a tail
 
-    Returns:
+"""
+A singly linked list with both a head and a tail
+
+Returns:
         _type_: _description_
-    """
+"""
 
 
 class LinkedList:
+    """A singly linked list with both a head and a tail
+    """
+
     def __init__(self):
         self.head = None
         self.tail = None
-        
-    """
-    @params:
+
+    def insertAfter(self, newKey, oldKey):
+        """
+        @params:
         - newVal: the value to insert
         - locationval: the value of the node after which we are inserting
-
-    """
-    def insertAfter(self, newKey, oldKey):
+        """
         if self.head == None:
             return
         else:
@@ -36,6 +39,10 @@ class LinkedList:
                     curr = curr.next
 
     def insertEnd(self, newKey):
+        """Insert newKey at the end of the list
+        Args:
+            newKey (any type): The key to insert into to the list
+        """
         if self.tail is not None:
             newNode = Node(newKey, None)
             self.tail.next = newNode

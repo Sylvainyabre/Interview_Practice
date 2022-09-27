@@ -1,12 +1,12 @@
-from LinkedList import LinkedList
 
-"""
-    This is a linked list  implementation of a queue with a runtime of O(1) for push()
-     and O(n) for pop()
-    """
-
+from linkedList import LinkedList
 
 class Queue:
+    """
+    This is a linked list  implementation of a queue with a runtime of O(1) for push()
+    and O(n) for pop()
+    """
+
     def __init__(self):
         self._queue = LinkedList()
         self.top = self._queue.head
