@@ -1,4 +1,4 @@
-package DesignPatterns;
+package DesignPatterns.observer;
 
 public class ConcreteObserver  implements Observer{
 

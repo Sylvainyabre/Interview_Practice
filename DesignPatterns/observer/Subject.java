@@ -1,6 +1,4 @@
-package DesignPatterns;
-
-import DesignPatterns.Observer;
+package DesignPatterns.observer;
 
 public interface Subject {
     public void registerObserver(Observer o);

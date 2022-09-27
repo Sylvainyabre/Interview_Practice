@@ -1,4 +1,4 @@
-package DesignPatterns;
+package DesignPatterns.decorator.pizzaOrder;
 
 public class ParmesanCheese extends ToppingDecorator {
 

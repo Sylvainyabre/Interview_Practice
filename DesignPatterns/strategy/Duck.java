@@ -1,4 +1,4 @@
-package DesignPatterns;
+package DesignPatterns.strategy;
 
 public abstract class Duck {
     private String name;

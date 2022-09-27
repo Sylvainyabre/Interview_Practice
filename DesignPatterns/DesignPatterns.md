@@ -7,7 +7,7 @@ Program to an interface, not to an implementation. Separate the aspects of the a
 public abstract class Duck {
     private String name;
     private int age;
-    private FlyBehaviour flyBehaviour;
+    private FlyBehaviour flyBehaviour; 
     private QuackBehaviour quackBehaviour;
 
     public Duck(String name, int age) {
