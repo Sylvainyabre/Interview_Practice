@@ -1,4 +1,4 @@
-package DSA.DesignPatterns;
+package DesignPatterns;
 
 public interface Observer {
     public void update();

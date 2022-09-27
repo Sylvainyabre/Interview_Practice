@@ -1,6 +1,6 @@
-package DSA.DesignPatterns;
+package DesignPatterns;
 
-import DSA.DesignPatterns.Observer;
+import DesignPatterns.Observer;
 
 public interface Subject {
     public void registerObserver(Observer o);

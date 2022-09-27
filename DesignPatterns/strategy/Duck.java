@@ -1,4 +1,4 @@
-package DSA.DesignPatterns;
+package DesignPatterns;
 
 public abstract class Duck {
     private String name;

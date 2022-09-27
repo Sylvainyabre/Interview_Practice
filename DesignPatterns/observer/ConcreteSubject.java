@@ -1,4 +1,4 @@
-package DSA.DesignPatterns;
+package DesignPatterns;
 
 import java.util.ArrayList;
 

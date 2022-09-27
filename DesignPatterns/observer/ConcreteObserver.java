@@ -1,4 +1,4 @@
-package DSA.DesignPatterns;
+package DesignPatterns;
 
 public class ConcreteObserver  implements Observer{
 
