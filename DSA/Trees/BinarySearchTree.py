@@ -1,76 +1,97 @@
 
 from typing import Any, List
 
+# TODO: turn this into methods instead of a class
+
 
 class BinarySearchTree():
-    def __init__(self, newData) -> None:
-        self.data: Any = newData
+    def __init__(self, newData):
+        self.data = newData
         self.right: BinarySearchTree = None
         self.left: BinarySearchTree = None
 
-    def insert(self, newData: Any, root):
+    def insert(self, newData):
         """Insert a non existing key into the binary search tree
 
         Args:
-            newData (Any):data to be inserted into to the BST
+            newData:data to be inserted into to the BST
             root (BinarySearchTree): The node to insert into
 
         Returns:
-            root: The root of the tree
+            void
         """
-        if root == None:
-            return BinarySearchTree(newData)
-        elif newData < root.data:
-            root.left = self.insert(newData, root.left)
-        elif newData > root.data:
-            root.right = self.insert(newData, root.right)
+        if self.data == None:
+            self.data = newData
+            return
+
+        if self.data == newData:
+            return
+
+        elif newData < self.data:
+            if self.left is None:
+                self.left = BinarySearchTree(newData)
+                return
+            else:
+                self.left.insert(newData)
 
         else:
-            return root
+            if self.right is None:
+                self.right = BinarySearchTree(newData)
+                return
+            else:
+                self.right.insert(newData)
 
-    def inOrder(self, root, arr: List):
+    def inOrder(self, arr: List):
         """
         - work on the left child first
         - then the root
         - and finally the right child
         Returns: a list of the elements of the tree in from in-order traversal
         """
-        if root == None:
+        if self.data == None:
             return arr
-        else:
+        if self.left:
+            self.left.inOrder(arr)
+        arr.append(self.data)
+        if self.right:
+            self.right.inOrder(arr)
+        return arr
 
-            self.inOrder(self.left, root, arr)
-            arr.append(root.data)
-            self.inOrder(self.right, root, arr)
-
-    def preOrder(self, root, arr: List):
+    def preOrder(self, arr: List):
         """
         - work on the root node first
         - then the left child
         - and finally the right child
         Returns: a list of the elements of the tree in from a pre-order traversal
         """
-        if root == None:
+        if self.data == None:
             return arr
-        else:
-            arr.append(root.data)
-            self.preOrder(self.left, root, arr)
-            self.preOrder(self.right, root, arr)
+        arr.append(self.data)
+        if self.left:
+            self.left.preOrder(arr)
+        if self.right:
+            self.right.preOrder(arr)
+        return arr
 
-    def printPostOrder(self, root, arr: List):
+    def postOrder(self,  arr: List):
         """
         - work on the left child first
         - then the right child
         - and finally the root node
         Returns: a list of the elements of the tree in from a post-order traversal
         """
-        if root == None:
+        if self.data == None:
             return arr
-        else:
-            self.postOrder(self.left, root, arr)
-            self.postOrder(self.right, root, arr)
-            arr.append(root.data)
-           
+        if self.left:
+            self.left.postOrder(arr)
+        if self.right:
+            self.right.postOrder(arr)
+
+        arr.append(self.data)
+        return arr
+
+    def levelOrder(self, root):
+        pass
 
     def remove(self, data, root):
         return root
