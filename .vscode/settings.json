@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./DSA/node",
+        "./DSA/LinkedList",
+        "./DSA/Queue"
+    ]
+}
