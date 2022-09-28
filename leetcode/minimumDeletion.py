@@ -38,12 +38,22 @@ def solution(string):
             wordDict[str(s)] += 1
         else:
             wordDict[str(s)] = 1
-    
+    deletes = 0
+    acc = []
+    for num in wordDict.values():
+        if num not in acc:
+            acc.append(num)
+        else:
+            while num > 0 and num in acc:
+                num -= 1
+                deletes += 1
+                if num not in acc:
+                    acc.append(num)
+                    break
 
-    return 0
+    return deletes
 
-       
 
-    return wordDict
-
-print(solution("aaabbc"))
+print(solution("aab"),0)
+print(solution("aaabbbcc"),2)
+print(solution("ceabaacb"),2)
