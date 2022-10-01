@@ -47,13 +47,12 @@ def solution(string):
             while num > 0 and num in acc:
                 num -= 1
                 deletes += 1
-                if num not in acc:
-                    acc.append(num)
-                    break
-
+                
+            acc.append(num)
+                    
+    print(deletes)
     return deletes
 
-
-print(solution("aab"),0)
-print(solution("aaabbbcc"),2)
-print(solution("ceabaacb"),2)
+solution("aab")
+solution("aaabbbcc")
+solution("ceabaacb")
