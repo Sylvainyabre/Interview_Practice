@@ -6,8 +6,8 @@ class TreeNode:
     def __init__(self, data):
 
         self.data = data
-        self.left = None
-        self.right = None
+        self.left:TreeNode = None
+        self.right:TreeNode = None
 
     def __str__(self) -> str:
         return "{"+" data={}, left:{}, right:{}".format( self.data, self.left == None, self.right == None)+"}"

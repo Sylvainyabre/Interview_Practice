@@ -15,3 +15,21 @@ Input: nums = [1,1,1,1,1]
 Output: [1,2,3,4,5]
 Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
     """
+
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        if len(nums)<=0:
+            return []
+        else:
+            runningSum =[]
+            acc = 0
+            i = 1
+            while i<=len(nums):
+                acc +=nums[i-1]
+                runningSum.append(acc)
+                i +=1
+            return runningSum

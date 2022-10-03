@@ -1,16 +1,100 @@
 
 from typing import Any, List
-
-# TODO: turn this into methods instead of a class
+from .TreeNode import TreeNode
 
 
 class BinarySearchTree():
-    def __init__(self, newData):
-        self.data = newData
-        self.right: BinarySearchTree = None
-        self.left: BinarySearchTree = None
+    """Binary Search Tree
+    """
 
-    def insert(self, newData):
+    def __init__(self):
+        self.root: TreeNode = None
+    
+    def __find(self, data,root:TreeNode):
+        if root is None:
+            return None
+        elif root.data==data:
+            return data
+        elif data<root.data:
+            return self.__find(data,root.left)
+        elif data>root.data:
+            return self.__find(data,root.right)
+        else:
+            return None
+
+    def __insert(self, data, root: TreeNode) -> TreeNode:
+
+        if root is None:
+            root = TreeNode(data)
+            return root
+        elif root.data == data:
+            return root
+        elif data > root.data:
+            root.right = self.__insert(data, root.right)
+        else:
+            root.left = self.__insert(data, root.left)
+        return root
+
+    def __remove(self, data, root: TreeNode):
+        pass
+
+    def __isBalanced(self, root: TreeNode) -> bool:
+        return False
+
+    def __isPerfect(self, root: TreeNode) -> bool:
+        return False
+
+    def __isFull(self, root: TreeNode) -> bool:
+        return False
+
+    def __isEmpty(self, root: TreeNode) -> bool:
+        return root is None
+
+    def __getHeight(self, root: TreeNode, height=-1) -> bool:
+        if root is None:
+            return height
+        else:
+            leftHeight = self.__getHeight(root.left, height+1)
+            rightHeight = self.__getHeight(root.right, height+1)
+            return max(leftHeight, rightHeight)
+
+    def __preOrder(self, root: TreeNode, arr={}):
+        if root is None:
+            return arr
+        arr.append(root.data)
+        self.__preOrder(root.left)
+        self.__preOrder(root.right)
+        return arr
+
+    def __inOrder(self, root: TreeNode, arr={}):
+        if root is None:
+            return arr
+        self.__inOrder(root.left)
+        arr.append(root.data)
+        self.__inOrder(root.right)
+        return arr
+
+    def __postOrder(self, root: TreeNode, arr={}):
+        if root is None:
+            return arr
+        self.__postOrder(root.left)
+        self.__postOrder(root.right)
+        arr.append(root.data)
+        return arr
+
+    def __levelOrder(self, root: TreeNode, arr={})->List:
+        if root is None:
+            return arr
+        else:
+            arr.append(root.data)
+            self.__levelOrder(root.left)
+            self.__levelOrder(root.right)
+        return arr
+    def __invert(self,root:TreeNode):
+        pass
+    def __isBinarySearchTree(self,root:TreeNode):
+        return False
+    def insert(self, newData) -> TreeNode:
         """Insert a non existing key into the binary search tree
 
         Args:
@@ -18,89 +102,71 @@ class BinarySearchTree():
             root (BinarySearchTree): The node to insert into
 
         Returns:
-            void
+            The root of the tree after insertion
         """
-        if self.data == None:
-            self.data = newData
-            return
+        return self.__insert(newData, self.root)
+    
 
-        if self.data == newData:
-            return
-
-        elif newData < self.data:
-            if self.left is None:
-                self.left = BinarySearchTree(newData)
-                return
-            else:
-                self.left.insert(newData)
-
-        else:
-            if self.right is None:
-                self.right = BinarySearchTree(newData)
-                return
-            else:
-                self.right.insert(newData)
-
-    def inOrder(self, arr: List):
+    def inOrder(self) -> List:
         """
         - work on the left child first
         - then the root
         - and finally the right child
         Returns: a list of the elements of the tree in from in-order traversal
         """
-        if self.data == None:
-            return arr
-        if self.left:
-            self.left.inOrder(arr)
-        arr.append(self.data)
-        if self.right:
-            self.right.inOrder(arr)
-        return arr
+        return self.__inOrder(self.root)
 
-    def preOrder(self, arr: List):
+    def preOrder(self) -> List:
         """
         - work on the root node first
         - then the left child
         - and finally the right child
         Returns: a list of the elements of the tree in from a pre-order traversal
         """
-        if self.data == None:
-            return arr
-        arr.append(self.data)
-        if self.left:
-            self.left.preOrder(arr)
-        if self.right:
-            self.right.preOrder(arr)
-        return arr
+        return self.__preOrder(self.root)
 
-    def postOrder(self,  arr: List):
+    def postOrder(self) -> List:
         """
         - work on the left child first
         - then the right child
         - and finally the root node
         Returns: a list of the elements of the tree in from a post-order traversal
         """
-        if self.data == None:
-            return arr
-        if self.left:
-            self.left.postOrder(arr)
-        if self.right:
-            self.right.postOrder(arr)
+        return self.postOrder(self.root)
 
-        arr.append(self.data)
-        return arr
+    def levelOrder(self) -> List:
+        """Performs a level order traversal of the tree
 
-    def levelOrder(self, root):
-        pass
+        Returns:
+            List: The elements of the tree from a level order traversal
+        """
+        return self.__levelOrder(self.root)
 
-    def remove(self, data, root):
+    def remove(self, data, root) -> bool:
         return root
 
-    def isBinarySearchTree(self, root):
-        return root
+    def isBinarySearchTree(self) -> bool:
+        return self.__isBinarySearchTree(self.root)
 
-    def invert(self, root):
-        return root
+    def isBalanced(self) -> bool:
+        return False
 
-    def find(self, key, root):
-        return root
+    def isPerfect(self) -> bool:
+        return False
+
+    def inverse(self) -> TreeNode:
+        return self.__invert(self.root)
+
+    def getHeight(self) -> int:
+        """Computes the height of the tree
+        - The height is define as the depth of the lowest node
+        - The root node has a depth of 0
+        - an empty tree a height of -1
+
+        Returns:
+            int: The height of the tree
+        """
+        return self.__getHeight(self.root)
+
+    def find(self) -> Any:
+        return self.__find(self.root)
