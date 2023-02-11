@@ -202,7 +202,27 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 
 ## Solution
 
+> Use a priority queue, compute frequencies, put the (-freq, num) in queue and pop k elements
+
 ```python
  
+import collections
+from queue import PriorityQueue
+class Solution:
+    
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        pq = PriorityQueue()
+        returned = []
+    
+        counts = collections.Counter(nums)
+        counts = dict(counts)
+        for num in counts.keys():
+            pq.put((-counts[num],num))
 
+        while k>0:
+            val = pq.get()
+            k -=1
+            returned.append(val[1])
+
+        return returned
 ```
