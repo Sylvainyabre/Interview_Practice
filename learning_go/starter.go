@@ -21,12 +21,12 @@ func (sc School) Yell() {
 	fmt.Printf("I am %v located in %v \n", sc.Name, sc.Country)
 }
 
-func NewPerson(first string, last string, Email string, birthdate string) (p *Person) {
+func NewPerson(first string, last string, email string, birthdate string) (p *Person) {
 	date, _ := time.Parse(`"2006-01-02"`, birthdate)
 	return &Person{
 		First:    first,
 		Last:     last,
-		Email:    Email,
+		Email:    email,
 		BirthDay: date,
 		School: School{
 			Name:    "UBC",
@@ -47,3 +47,5 @@ func main() {
 	newPerson.School.Yell()
 	fmt.Println("hello World")
 }
+
+// create a function to determine if two strings are anagrams
