@@ -221,76 +221,6 @@ class Path:
         else:
             return self.get_total_cost() < other.get_total_cost()
 
-
-def addToFrontierGeneric(path: Path, path_cost: int, frontier: Frontier, neighbor: Node, best_path: Path, best_cost: int):
-    """Add path to frontier without condition
-
-    Args:
-        path (Path): That path we just expanded
-        path_cost (int): The cost of the path we just expanded
-        frontier (Frontier): The frontier of our search
-        neighbor (Node): The neighbor to add to the path
-        best_path (Path): The best path found so far
-        best_cost (int): The cost of the best path found so far
-    """
-    copy_path = copy.deepcopy(path)
-    copy_path.add_node(neighbor)
-    copy_path.set_cost(path_cost)
-    frontier.add(copy_path)
-
-
-def addToFrontierBandB(path: Path, path_cost: int, frontier: Frontier, neighbor: Node, best_cost: int):
-    """Only add path to frontier if `f(path) = path.get_heuristic_cost()+path.get_cost()` is less than `best_cost`
-
-    Args:
-        path (Path): That path we just expanded
-        path_cost (int): The cost of the path we just expanded
-        frontier (Frontier): The frontier of our search
-        neighbor (Node): The neighbor to add to the path
-        best_path (Path): The best path found so far
-        best_cost (int): The cost of the best path found so far
-    """
-    if path_cost+path.get_last_node().get_heuristic_cost() < best_cost:
-        copy_path = copy.deepcopy(path)
-        copy_path.add_node(neighbor)
-        copy_path.set_cost(path_cost)
-        frontier.add(copy_path)
-
-
-def addToFrontierIDS(path: Path, path_cost: int, frontier: Frontier, neighbor: Node, best_cost: int):
-    """Only add path to frontier if `f(path) = path.get_heuristic_cost()+path.get_cost()` is less than `best_cost`
-
-    Args:
-        path (Path): That path we just expanded
-        path_cost (int): The cost of the path we just expanded
-        frontier (Frontier): The frontier of our search
-        neighbor (Node): The neighbor to add to the path
-        best_path (Path): The best path found so far
-        best_cost (int): The cost of the best path found so far
-    """
-    if path_cost+path.get_last_node().get_heuristic_cost() < best_cost:
-        copy_path = copy.deepcopy(path)
-        copy_path.add_node(neighbor)
-        copy_path.set_cost(path_cost)
-        frontier.add(copy_path)
-
-
-def addToFrontierIDS(path: Path, frontier: Frontier, best_path: Path, best_cost):
-    pass
-
-
-def CheckGoalGeneric():
-    pass
-
-
-def checkGoalIDS():
-    pass
-
-
-def checkGoalBandB():
-    pass
-
-
 class GenericSearchContext:
     """This is a multipurpose search context capable of performing DFS, BFS, LCFS, BestFS, A*
     by calling `search(source:Node,goal:str)` after configuring and setting the relevant data structure
@@ -300,11 +230,9 @@ class GenericSearchContext:
     - To perform A* : activate `total_mode` before passing it to the search object
     - to perform BestFS: activate `heuristic_mode` before passing it to the search object
     """
-    # addToFrontier: Callable[[Path, Frontier, int], None], checkGoal: Callable[[Path, Path, int, int, bool], bool],
 
     def __init__(self, frontier=Queue()):
-        # graph should be a dictionary where keys are nodes
-        # and values are lists of neighbors
+
         self.frontier: list[Frontier] = frontier
         self.nodes: list[Node] = None
         self.edges: list[Arc] = None  # arcs
@@ -313,8 +241,6 @@ class GenericSearchContext:
         self.is_depth_bound_reached = False
         self.solution_so_far = None
         self.cost_so_far = 99999999
-        # self.addToFrontier = addToFrontier
-        # self.checkGoal = checkGoal
 
     def set_frontier(self, new_frontier: Frontier):
         self.frontier = new_frontier
@@ -398,7 +324,7 @@ class GenericSearchContext:
 
             steps += 1
             if last_node.get_label() == goal:
-                # if self.checkGoal(path, self.best_path, self.best_cost, self.depth_bound, self.is_depth_bound_reached):
+
                 return f"Found path:{path.path_string()} with cost {self.get_path_linear_cost(path)}"
 
             last_node = path.get_last_node()
@@ -408,8 +334,6 @@ class GenericSearchContext:
                 copy_path.add_node(neighbor)
                 copy_path.set_cost(self.get_path_linear_cost(copy_path))
                 self.frontier.add(copy_path)
-                # self.addToFrontier(copy_path, self.frontier,
-                # self.depth_bound, self.is_depth_bound_reached)
 
         return "No result found"
 
@@ -468,7 +392,7 @@ edges = [SA, SB, SC, AC, BC, CD, CE, CF, DF, EF, FG, FH, FZ, HZ, GZ]
 stack = Stack()
 queue = Queue()
 pq = PriorityQ()
-pq.activate_total_cost_mode()
+pq.activate_linear_cost_mode()
 searchObj = GenericSearchContext()
 searchObj.set_nodes(nodes)
 searchObj.set_edges(edges)
