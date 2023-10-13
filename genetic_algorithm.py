@@ -20,7 +20,7 @@ class GeneticAlgorithm:
                         [1, 2, 3, 4],
                         [1, 2, 3, 4],
                         [1, 2, 3, 4]]
-        self.solution_set = set()
+        self.solution_set = []
 
     def set_generations(self, gen):
         self.generations = gen
@@ -70,7 +70,7 @@ class GeneticAlgorithm:
             if random2 <= cumulative_probability and parents[idx] != pop[idx]:
                 parents[1] = pop[idx]
                 break
-        return (parents[0],parents[0])
+        return (parents[0],parents[1])
 
     def get_fitness_score(self, individual):
         #Returns the number of constraints satisfied by this individual
@@ -82,7 +82,6 @@ class GeneticAlgorithm:
         """
         scores = len(pop)*[0]
         for idx, individual in enumerate(pop):
-            print(idx,pop)
             scores[idx] = self.get_fitness_score(individual)
         return scores
 
@@ -140,10 +139,10 @@ class GeneticAlgorithm:
                 "parent_likelihood": self.get_selection_probabilities(self.population)}
             print(info)
             for individual in self.population:
-                if self.is_solution(individual):
-                    self.solution_set.add(individual)
+                if self.is_solution(individual) and individual not in self.solution_set:
+                    self.solution_set.append(individual)
+            new_population = []
             for i in range(self.pop_size//2):
-                new_population = []
                 print(f"------crossover {i}")
                 parent1, parent2= self.select_parents(self.population)
 
@@ -160,6 +159,6 @@ class GeneticAlgorithm:
 
         return self.solution_set
 
-algorithm = GeneticAlgorithm(10)
+algorithm = GeneticAlgorithm(10000)
 result = algorithm.solve()
-print(list(result))
+print(result)
