@@ -5,11 +5,11 @@ import copy
 
 class Frontier(ABC):
     @abstractmethod
-    def get_next(self):
+    def get_next(self)->"Assignment":
         pass
 
     @abstractmethod
-    def add(self, assignment: "assignment"):
+    def add(self, assignment: "Assignment"):
         pass
 
     @abstractmethod
@@ -25,10 +25,10 @@ class Stack(Frontier):
     def __init__(self):
         self.queue = deque()
 
-    def get_next(self) -> "assignment":
+    def get_next(self) -> "Assignment":
         return self.queue.pop()
 
-    def add(self, assignment: "assignment"):
+    def add(self, assignment: "Assignment"):
         self.queue.append(assignment)
 
     def get_length(self) -> int:
@@ -50,7 +50,7 @@ class Assignment:
     def get_prefix(self) -> str:
         empty_prefix = ""
         prefix = "  "
-        if self.assigned_count == 0:
+        if self.assigned_count == 1:
             return empty_prefix
         else:
             return prefix*self.assigned_count
@@ -67,6 +67,9 @@ class Assignment:
             if self.nodes[var] is None:
                 return var
         return None
+
+    def get_assignment_count(self):
+        return self.assigned_count
 
     def is_fully_assigned(self) -> bool:
         for var in list(self.nodes.keys()):
@@ -190,32 +193,35 @@ class assignmentPruningSearchContext:
             initial_assignment = Assignment()
             initial_assignment.add_node(source, d)
             self.frontier.add(initial_assignment)
-        steps = 0
         failures = 0
         while not self.frontier.is_empty():
             assignment = self.frontier.get_next()
-
-            steps += 1
-
-            satisfies_all, condition_name = self.satisfies_constraints(
+            satisfies_all, _ = self.satisfies_constraints(
                 assignment)
+            nodes = assignment.get_nodes()
+            keys = list(nodes.keys())
+            assigned_count = assignment.get_assignment_count()
+            next_to_print = keys[assigned_count-1]
             if not satisfies_all:
                 failures += 1
                 print(
-                    f"{assignment.get_prefix()}{copy_assignment.get_nodes()} failed [{condition_name}]")
+                    f"{assignment.get_prefix()}{next_to_print}={nodes[next_to_print]} failed ")
                 continue
             elif assignment.is_fully_assigned():
                 print(
-                    f"{assignment.get_prefix()}{assignment.get_nodes()} is a solution")
+                    f"{assignment.get_prefix()}{next_to_print}={nodes[next_to_print]} solution")
                 self.solution_set.append(assignment.get_nodes())
+            else:
+                print(f"{assignment.get_prefix()}{next_to_print}={nodes[next_to_print]} passed")
 
             next_unassigned_variable = assignment.get_next_unassigned_variable()
             for d in self.domains:
                 copy_assignment = copy.deepcopy(assignment)
-                copy_assignment.add_node(next_unassigned_variable, d)
-                self.frontier.add(copy_assignment)
+                if next_unassigned_variable is not None:
+                    copy_assignment.add_node(next_unassigned_variable, d)
+                    self.frontier.add(copy_assignment)
 
-        print(f"{failures} assignments have failed after {steps} steps")
+        print(f"{failures} assignments have failed after")
         return self.solution_set
 
 
