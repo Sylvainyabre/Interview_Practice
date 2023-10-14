@@ -59,7 +59,7 @@ class GeneticAlgorithm:
         return mutated_individual
 
     def select_parents(self, pop):
-        scores = self.get_fitness_scores(pop)
+        scores = self.get_selection_probabilities(pop)
         random1 = random.random()
         parents = 2*[0]
         cumulative_probability = 0
@@ -70,9 +70,13 @@ class GeneticAlgorithm:
                 break
         cumulative_probability = 0
         random2 = random.random()
+        hit_probability = False
         for idx in range(self.pop_size):
-            cumulative_probability += scores[idx]
-            if random2 <= cumulative_probability and parents[0] != pop[idx]:
+            if not hit_probability:
+                cumulative_probability += scores[idx]
+            if random2 <= cumulative_probability:
+                hit_probability = True
+            if parents[0] != pop[idx]:
                 parents[1] = pop[idx]
                 break
         return (parents[0], parents[1])
