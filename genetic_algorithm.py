@@ -137,7 +137,7 @@ class GeneticAlgorithm:
     def solve(self):
         generation = 0
 
-        while generation < self.generations:
+        while generation <= self.generations:
             print("generation".upper(), generation)
             for idx, ind in enumerate(self.population):
                 print(f"   population[{idx}]={self.population[idx]}")
@@ -145,7 +145,8 @@ class GeneticAlgorithm:
                     f"         fitness score: {self.get_fitness_score(ind)}")
                 print(
                     f"         parenthood likelihood: {self.get_selection_probability(ind,self.population)}")
-
+            if generation==5:
+                break
             for individual in self.population:
                 if self.is_solution(individual) and individual not in self.solution_set:
                     self.solution_set.append(individual)
