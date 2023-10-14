@@ -1,4 +1,6 @@
 import random
+
+
 class GeneticAlgorithm:
     def __init__(self, generations=5) -> None:
         self.pop_size = 8
@@ -37,7 +39,8 @@ class GeneticAlgorithm:
             second_parent[crossover_point:]
         offspring2 = second_parent[:crossover_point] + \
             first_parent[crossover_point:]
-        print(f"----------offspring 1: {offspring1}, offspring 2: {offspring2}")
+        print(
+            f"----------offspring 1: {offspring1}, offspring 2: {offspring2}")
         return (offspring1, offspring2)
 
     def mutate(self, individual, chance=0.3,):
@@ -45,9 +48,14 @@ class GeneticAlgorithm:
         mutated_individual = individual
         can_mutate = mutation_chance <= chance
         if can_mutate:
-            mutation_point = random.randint(0,len(individual)-1)
+
+            mutation_point = random.randint(0, len(individual)-1)
             domain = self.domains[0]
-            new_value_index = random.randint(0,len(domain)-1)
+            new_value_index = random.randint(0, len(domain)-1)
+            while individual[mutation_point] == domain[new_value_index]:
+                new_value_index = random.randint(0, len(domain)-1)
+                    
+
             print(f"----------mutating index {mutation_point} in {individual}")
             print(f"----------changing the value to {domain[new_value_index]}")
             mutated_individual[mutation_point] = domain[new_value_index]
@@ -70,10 +78,10 @@ class GeneticAlgorithm:
             if random2 <= cumulative_probability and parents[idx] != pop[idx]:
                 parents[1] = pop[idx]
                 break
-        return (parents[0],parents[1])
+        return (parents[0], parents[1])
 
     def get_fitness_score(self, individual):
-        #Returns the number of constraints satisfied by this individual
+        # Returns the number of constraints satisfied by this individual
 
         return self.get_satisfaction_count(individual)
 
@@ -131,21 +139,23 @@ class GeneticAlgorithm:
 
     def solve(self):
         generation = 0
-        
+
         while generation < self.generations:
             print("generation".upper(), generation)
-            for idx,ind in enumerate(self.population):
+            for idx, ind in enumerate(self.population):
                 print(f"------population[{idx}]={self.population[idx]}")
-                print(f"----------fitness score: {self.get_fitness_score(self.population[idx])}")
-                print(f"----------parenthood likelihood: {self.get_selection_probability(self.population[idx],self.population)}")
-                
+                print(
+                    f"----------fitness score: {self.get_fitness_score(ind)}")
+                print(
+                    f"----------parenthood likelihood: {self.get_selection_probability(ind,self.population)}")
+
             for individual in self.population:
                 if self.is_solution(individual) and individual not in self.solution_set:
                     self.solution_set.append(individual)
             new_population = []
             for i in range(self.pop_size//2):
                 print(f"------Crossover {i}")
-                parent1, parent2= self.select_parents(self.population)
+                parent1, parent2 = self.select_parents(self.population)
 
                 offspring1, offspring2 = self.crossover(parent1, parent2)
                 mutated_offspring1 = self.mutate(offspring1)
@@ -160,6 +170,7 @@ class GeneticAlgorithm:
 
         return self.solution_set
 
-algorithm = GeneticAlgorithm()
+
+algorithm = GeneticAlgorithm(5000)
 result = algorithm.solve()
 print(result)
