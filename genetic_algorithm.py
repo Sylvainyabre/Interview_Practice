@@ -33,14 +33,14 @@ class GeneticAlgorithm:
 
     def crossover(self, first_parent, second_parent):
         crossover_point = random.randint(1, len(first_parent)-1)
-        print(f"----------parent 1: {first_parent}, parent2: {second_parent}")
-        print("----------crossover point: ", crossover_point)
+        print(f"         parent 1: {first_parent}, parent2: {second_parent}")
+        print("         crossover point: ", crossover_point)
         offspring1 = first_parent[:crossover_point] + \
             second_parent[crossover_point:]
         offspring2 = second_parent[:crossover_point] + \
             first_parent[crossover_point:]
         print(
-            f"----------offspring 1: {offspring1}, offspring 2: {offspring2}")
+            f"         offspring 1: {offspring1}, offspring 2: {offspring2}")
         return (offspring1, offspring2)
 
     def mutate(self, individual, chance=0.3,):
@@ -54,10 +54,7 @@ class GeneticAlgorithm:
             new_value_index = random.randint(0, len(domain)-1)
             while individual[mutation_point] == domain[new_value_index]:
                 new_value_index = random.randint(0, len(domain)-1)
-                    
-
-            print(f"----------mutating index {mutation_point} in {individual}")
-            print(f"----------changing the value to {domain[new_value_index]}")
+            
             mutated_individual[mutation_point] = domain[new_value_index]
         return mutated_individual
 
@@ -143,23 +140,26 @@ class GeneticAlgorithm:
         while generation < self.generations:
             print("generation".upper(), generation)
             for idx, ind in enumerate(self.population):
-                print(f"------population[{idx}]={self.population[idx]}")
+                print(f"   population[{idx}]={self.population[idx]}")
                 print(
-                    f"----------fitness score: {self.get_fitness_score(ind)}")
+                    f"         fitness score: {self.get_fitness_score(ind)}")
                 print(
-                    f"----------parenthood likelihood: {self.get_selection_probability(ind,self.population)}")
+                    f"         parenthood likelihood: {self.get_selection_probability(ind,self.population)}")
 
             for individual in self.population:
                 if self.is_solution(individual) and individual not in self.solution_set:
                     self.solution_set.append(individual)
             new_population = []
             for i in range(self.pop_size//2):
-                print(f"------Crossover {i}")
+                print(f"   Crossover {i}")
                 parent1, parent2 = self.select_parents(self.population)
 
                 offspring1, offspring2 = self.crossover(parent1, parent2)
                 mutated_offspring1 = self.mutate(offspring1)
                 mutated_offspring2 = self.mutate(offspring2)
+
+                print(f"         mutated_1  : {mutated_offspring1},",f"mutated_2  : {mutated_offspring2}")
+                #print(f"         mutated_2  : {mutated_offspring2}")
                 new_population.append(mutated_offspring1)
                 new_population.append(mutated_offspring2)
             print("---------------------------------------------------------------")
@@ -171,6 +171,6 @@ class GeneticAlgorithm:
         return self.solution_set
 
 
-algorithm = GeneticAlgorithm(5000)
+algorithm = GeneticAlgorithm()
 result = algorithm.solve()
 print(result)
