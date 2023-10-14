@@ -72,7 +72,7 @@ class GeneticAlgorithm:
         random2 = random.random()
         for idx in range(self.pop_size):
             cumulative_probability += scores[idx]
-            if random2 <= cumulative_probability and parents[idx] != pop[idx]:
+            if random2 <= cumulative_probability and parents[0] != pop[idx]:
                 parents[1] = pop[idx]
                 break
         return (parents[0], parents[1])
