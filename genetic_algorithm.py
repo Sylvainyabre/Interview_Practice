@@ -34,7 +34,7 @@ class GeneticAlgorithm:
     def crossover(self, first_parent, second_parent):
         crossover_point = random.randint(1, len(first_parent)-1)
         print(f"         parent 1: {first_parent}, parent2: {second_parent}")
-        print("         crossover point: ", crossover_point)
+        print("         crossover point:", crossover_point)
         offspring1 = first_parent[:crossover_point] + \
             second_parent[crossover_point:]
         offspring2 = second_parent[:crossover_point] + \
