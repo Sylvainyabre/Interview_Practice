@@ -1,0 +1,9 @@
+{
+  "paragraphs": [
+    "Ce subreddit est dédié aux développeurs francophones, pour discuter de tout relié au développement! Carriére, matériel, logiciel...",
+    "Hello la commu’ J’ai besoin de vous pour un conseil pour apprendre Java en autodidacte. Je maîtrise Python et Rails et plusieurs framework, mais étant donné le marché du travail principalement axé sur Java et Angular, j’aimerais rajouter cela à mes armes.",
+    "Cependant les tutos YouTube et OpenClassRoom sont vraiment pas terrible pour le coup, et sur coursera c’est un peu le souk, donc si il faut sortir la CB j’aimerais être sûr avant du cours. Aucun ne s’accorde sur la procédure de mise en place de l’environnement, entre Groovy Kotlin et Maven… j’ai essayé aussi l’IDE Éclipse mais franchement pas terrible comparé à VSCode je trouve. Vous connaîtriez un bon tuto, cours, etc… montrant la procédure à jours de façon efficace ? Pas des cours sur la langue elle même mais plutôt sur l’environnement donc.",
+    "Objectif : mettre en place un site web en Java + angular, avec base de donnée pour enregistrer 2 types de user et stocker des documents, avec un système de messagerie, ainsi qu’une méthode de scrapping pour automatiser des publications.",
+    "Sachant que je sais faire ça très facilement en rails, j’espère qu’il n’y aura pas de grosse difficulté avec Java du coup. 🫣"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "paragraphs": [
+    "Communauté québécoise sur les TIs",
+    "Salut ! Je viens de graduer d’un bac en info en complétant 3 stages (2 en cyberSec et 1 en DecSecOps) Le cyber forensic m’intéresse bcp surtout que c’est promettant comme domaine pour le future. Je peux tu trouver des gens ici qui y sont déjà? Ou qui s’y connaissent bien ? J’aimerai entendre comment vous avez fait pour travailler là dedans et comment puis je aller dans ce domaine ? Mercii",
+    "La seule chose que je peux vraiment dire c'est que c'est une discipline très spécialisée. Les grosses entreprises vont avoir des gens à l'interne pour investiguer leur incidents, et cela implique du cyber forensics, mais ça sera souvent pas un rôle à temps plein. Des compagnies spécialisés vont faire ça pour leur clients sur demande, mais elles sont plutôt rare.",
+    "Si tu veux te lancer là dedans, joindre un SOC pour travailler à la réponse aux incidents serait un bon début.",
+    "Merci bcp pour ta réponse!!",
+    "Salut, je ne fais pas de cyber forensic moi meme mais je travaille avec des gens qui en font.",
+    "Premierement, clarifie si tu veux faire du Incident Response ou du forensics. Ce n'est pas du tout le meme role, meme si cest a l'occasion combine dans certains postes. Les 2 roles sont loin d'etre entry level (SOC niveau 3+) et demandent des connaissances tres larges pour pouvoir comprendre des incidents complexes. Les 2 sont aussi tres intenses quand requis, je connais plusieurs qui travaillent 16h+ par jour pendant un incident majeur. Jamais assez de staff...",
+    "Un truc a savoir est que le forensic comme tel vise a conserver des traces qui permettent d';aller en cours, donc il faut etre tres methodique, tout documenter et suivre des procedures precises. C'est souvent un role confie a des anciens policiers pour leur credibilite en cours ou en cas de litige, mais aussi pour la rigueur.  Donc pas evident. Lers outils sont aussi complexes, dispendieux et tres dur d'acces quand non-initie.",
+    "Meilleure chance est de rentrer dans un SOC etabli et d'etre volontraire apres quelques annees.",
+    "Bonne chance",
+    "Aux states beaucoup vont travailler pour les forces policières. Le FBI est renommé pour en engager beaucoup. Tu pourrais t’informer auprès de la police de Montréal, de la SQ, de la GRC."
+  ]
+}

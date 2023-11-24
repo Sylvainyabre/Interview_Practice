@@ -1,0 +1,25 @@
+{
+  "paragraphs": [
+    "Ce subreddit est dédié aux développeurs francophones, pour discuter de tout relié au développement! Carriére, matériel, logiciel...",
+    "Je suis un développeur Flutter débutant qui a appris ce framework par moi-même depuis 2019. J'ai réalisé plusieurs projets personnels avec Flutter et Firebase (juste pour apprendre getx, bloc, provider ou comment interagir avec le backend, les classes singletons, l'utilisation de packages, etc...). Je suis actuellement en France (Île-de-France) et je recherche un emploi avec Flutter, soit en France, soit en télétravail. Je n'ai pas de diplôme en informatique, mais j'ai une licence en électronique et électrotechnique.",
+    "Je ne suis pas assez confiant pour être totalement indépendant, et j'ai essayé fiverr où les gens demandent quelque chose entre amazon et alibaba lol, donc je suppose et je pense que vous conviendrez que je devrais commencer le freelancing après un certain temps de travail professionnel.",
+    "Dois-je obtenir un certificat de développement Flutter ? (Je n'ai qu'un certificat Udemy). Comment avez-vous trouvé du travail ? partagez avec moi votre experience svp ! Y a-t-il vraiment des gens qui travaillent en tant que développeur Flutter, et non Django ou Laravel, et Flutter est une compétence supplémentaire sur votre CV ?",
+    "Ca fait toujours un plus sur ton CV pour montrer que tu t'es bougé pour apprendre quelque chose. Après si tu bosses sur une autre techno ben c'est pas grave tu auras quand même des compétences réutilisables dans ce domaine.",
+    "Après en général tu es recruté en tant que \"dev web\" ou \"dev mobile\" et pas \"dev flutter\" (il y a des exceptions comme partout). Un bon dev est capable d'apprendre et de réfléchir, c'est pas un gars qui a 50 langages et framework sur son CV.",
+    "Et oui c'est mieux de bosser dans une boîte avant de faire du freelance, les études c'est bien, l'expérience c'est mieux.",
+    "Tout le monde s'en fout de flutter, le marché du travail c'est angular, react, java, C#, SQL, cherche pas plus loin.",
+    "C’est un language hyper récent c’est ça le problème surtout sur le marché du travail. Créé officiellement en 2019 (déc 2018), peu d’entreprise l’on prit en main pour le moment. On commence juste à voir des annonces de temps en temps poper sur indeed pour du Dev Flutter, mais je suis sûr que dans quelques années il y en aura beaucoup plus",
+    "Tout le monde s'en fout de flutter",
+    "Généralisation abusive. Il y a des entreprises qui recherchent encore des programmeurs cobol et ils sont payés cher, pour donner un contre exemple.",
+    "Au contraire, pour une entreprise qui recherche un programmeur flutter, vous serez une perle rare et cela vaut son prix. Alors que pour les autres, il y a peut-être une demande abondante, mais aussi une offre abondante sur le marché des développeurs.",
+    "Et on voit le résultat pour angular, on bosse en JS vannilla et PHP (simple Basic). On devait fournir des infos via un fichier xls sur une plateforme angular du gouvernement. Alors oui graphiquement c'est mignon mais y'a des éléments qui n'ont rien a faire là. Des console'log en pagaille. Des pages qui se rafraîchissent pas et sans loader...",
+    "D'abord formez vous au basique svp, le navigateur fournis pas mal d'interaction avec l'user. Et PHP sécurisé très bien",
+    "J'ai fait un peu de Flutter et je n'ai personnellement pas accroché (avis purement subjectif). En revanche faut dire ce qui est, pour faire des POC c'est pratique et rapide (encore plus avec son intégration firebase).",
+    "Le marché est encore trop jeune je pense pour que tu veuilles en faire un boulot. Par contre comme \"truc en plus\" sur ton CV, c'est bien.",
+    "Pour ce qui est d'apprendre la programmation avec ce framework : je suis très circonspect. Certes y'a des concepts de programmation classique qui te serviront ailleurs, mais y'a aussi pleins de trucs qui ne te re-serviront pas forcément.",
+    "Concrètement, c'est pas tous les jours que tu vas faire du Dart. L'aspect conception d'UI m'a beaucoup rappelé quand je faisais du Swing y'a 10 ans et puis le design pattern BLoC... j'ai vu ça que dans ce framework (j'ai pas 30 ans d'XP non plus mais ça me semble pas être un design pattern hyper populaire).",
+    "Donc ouais, comme dit plus haut, si tu veux connaître les fondamentaux du frontend web ou même savoir faire de la programmation mobile non native, tourne toi plutôt vers du Typescript qui est utilisé dans beaucoup de framework web / mobile. Ça te prendra pas beaucoup de temps d'avoir des bases vu que tu sais faire du Dart. Android Kotlin est aussi une possibilité sans trop de difficultés si tu veux faire du pur mobile. Et contrairement à ce qui est écrit plus haut, apprendre le PHP me semble être une erreur, sauf si t'as envie d'aller bosser dans des boîtes de com et faire du wordpress et autre CMS.",
+    "Bonne chance !",
+    "J ai toujours trouvé que les cours de musique au collège servait à rien perso...mais ce n'est que mon avis..."
+  ]
+}

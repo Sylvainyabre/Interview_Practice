@@ -1,0 +1,33 @@
+{
+  "paragraphs": [
+    "Ce subreddit est dédié aux développeurs francophones, pour discuter de tout relié au développement! Carriére, matériel, logiciel...",
+    "Bonjour.",
+    "J'essaie actuellement de définir des relations pour mes tables et je tombe sur des façons de faire différentes sans trop comprendre qu'elles sont les implications ou la meilleure façon de faire.",
+    "Quand je regarde la manièredont Moodle gère ses tables, c'est à chaque fois les enfants qui stockent l'ID du parent, mais jamais le parent ne stockera l'ID de ses enfants. Ici j'ai mis le lien de la table \"cours\". On peut voir que l'ID du cours est référencé dans pleins d'autres tables (les badges, les activités, les cours, les statistiques, etc). Et que la seule relation que la table \"cours\" a, c'est la catégorie à laquelle le cours appartient (donc son parent).",
+    "Pourquoi une telle façon de faire ? Je suis plus habitué aux bases de données NoSQL où c'est le parent qui va garder les relations vers ses enfants, voir une double relation parents vers enfants, enfants vers parents avec une table à part (ça s'appelle une foreign key table si je ne me trompe pas ?)",
+    "Est-ce une bonne idée de designer sa base de données comme le fait moodle ? cela est-il important pour les performances, ou on s'en fiche ? Il faut prendre en compte qu'il y aura bien plus d'éléments dans les table enfants que celle des parents, d'où mon interrogation quant au fait de devoir query la table enfant à chaque fois, au lieu de devoir passer par la table parents, puis aller chercher l'ID des enfants qui y sont stockés.",
+    "Merci pour votre aide !",
+    "Parce que si ton parent a plusieurs enfants tu ne peux pas tous les mettre dans une seule colonne tout simplement. Y a même pas de questions de est-ce que c'est mieux ou pas, pour une relation one-to-many (un parent avec des enfants) il n'est pas possible de stocker les enfants dans la table du parent.",
+    "La réponse",
+    "This, l'auteur s'invente des problèmes.",
+    "C'est la façon la plus simple de représenter une relation  1-N.",
+    "Je pense que la notion de parent/enfant est incorrect. Dans le casgrade_items_history, c'est qui le parent ?oldid,courseid,caterogyid,outcomeidouscaleid? Le concept de parent/enfant existe pas vraiment, c'est vraiment des relations et pas de l'ownership.",
+    "La foreign key, pour revenir sur la définition, c'est une contrainte. Ton badge va avoir une colonnecourseidqui lui n'est qu'un bete BIGINT. La FK va juste faire en sorte que le moteur s'assure que la clef en question existe dans la table référencée. Tu pourrais totalement t'en passer, ça rajoute juste une niveau de consistence, et ça permet d'autres possibilités (du type empecher la suppression du cours référencé par un badge, ou alors supprimés les badges associés a un cours lorsque celui-ci est supprimé.",
+    "Les tables de liaison avec une table à part tu ne verras ça que dans les cas de relation N-N généralement.",
+    "Stocker tes IDs dans une colonne blob/json de ton \"parent\" te forcera à devoir évaluer le contenu de cette colonne et re-requêter (tu dois probablement pouvoir évaluer/filter avec un champ JSON en direct, mais quasi certain que ça sera moins performant).",
+    "Pour donner des pistes supplémentaires aux autres réponses, il faut regarder du côté du concept de normalisation et aussi la méthode merise.",
+    "Je plussoie sur Merise, les MCD/MPD et les formes normales.",
+    "Pour les SGBDR on a pas fait mieux,à mon sens depuis.... 30 ans.",
+    "Mon avis de vieux con.",
+    "J'y connais quasi rien mais y'a mptt qui a l'air de dealer avec les hierarchies",
+    "voirla",
+    "[removed]",
+    "C'est très clair, merci beaucoup !",
+    "tl;dr les relations many-to-one, c'est plus simple à coder et à représenter en base, niveau perf c'est kif kif.",
+    "C'est simple: tu ne peux pas stocker de liste dans une table sgbdr, pas sans devoir la parser via l'application et pourrir tes perfs et la formalité de ton schéma de BDD. La seule manière t'avoir une relation one-to-many ou many-to-many (chaque parent connaitlesenfants) c'est de maintenir une table qui suit les relations et seulement les relations entre les parents et enfants.https://i.imgur.com/uGFDNKA.png",
+    "Donc à parcourir c'est 2 requêtes: d'abord tu vas chercher la liste des enfants ($childIDs = select childID from relationsParentsEnfants where parentID=xxx), tu check à quelle table correspond chaque type, puis pour chaque type tu query via l'ID enfant ($enfants += select * from enfants where id=$childID). Bilan: 2 requêtes différentes, une boucle for et une map type->table.",
+    "Alors que l'inverse (chaque enfant connaîtsonparent), ça demande pas de stocker une liste mais une seule valeur, c'est faisable proprement avec une clé étrangère \"directe\" et en 1 requête.$enfants += select * from tableEnfant where parentID=xxx --and type in xyz,xzy",
+    "Le tout avec la complexité ajoutée qu'un ID d'enfant seul ne permet pas de retrouver un enfant comme ils sont éparpillés sur toutes les tables de ce que tu nous dis. Je suppose que Moodle a une table qui te dit quel enfant est de quel type pour aller aiguiller tes requêtes parce que sinon c'est un cauchemar.",
+    "Niveau perf ça va déjà dépendre de si ta base a des clés et index corrects -> tes tables ont bien des index sur les clés primaireset étangères(c'est pas automatique). Si c'est le cas, d'instinct les deux méthodes auront des perfs similaires, le parent->enfant va faire du O(n) avec n le nombre d'enfants du parent, et dans le cas enfant->parent du O(log n) avec n le nombre d'enfants total. Tant qu'on est pas sur des tailles de bases énormes c'est du pareil au même, sur un Moddle on doit parler de qqs milliers de lignes, même Excel pourrait rechercher une valeur dedans rapidement, alors un SGBD avec des index..."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "paragraphs": [
+    "Ce subreddit est dédié aux développeurs francophones, pour discuter de tout relié au développement! Carriére, matériel, logiciel...",
+    "Bonjour à tous,",
+    "j'essaie en ce moment de comprendre l'intégration continue et Github actions. J'ai créé mon premier site et souhaiterai avoir vos avis sur la façon la plus correcte de synchroniser son contenu avec la branche main du repo GitHub correspondant.Ma première approche serait de créer un fichier github/workflows qui permettrai de lancer un script .sh au moment où du contenu est push/merge sur main.Ce script ferai un pull automatique sur le serveur de mon site web grâce à une connexion SSH.",
+    "Est-ce que je suis sur la bonne voie ou totalement à côté de la plaque ? Est-ce que vous auriez des conseils pour mettre en place du déploiement continu ?",
+    "Tous les conseils sont les bienvenus !"
+  ]
+}

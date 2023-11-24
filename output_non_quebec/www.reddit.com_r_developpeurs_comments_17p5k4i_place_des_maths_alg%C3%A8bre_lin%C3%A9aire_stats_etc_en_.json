@@ -1,0 +1,22 @@
+{
+  "paragraphs": [
+    "Ce subreddit est dédié aux développeurs francophones, pour discuter de tout relié au développement! Carriére, matériel, logiciel...",
+    "Je me posais une question en me baladant régulièrement sur le reddit de software development anglais. La bas il est discuté très régulièrement l'importance de la place des maths appliqués pour un développeur logiciel, alors que dans ce sub, je trouve justement des gens qui disent l'inverse, qu'ils s'en sortent très bien en se débrouillant en algorithmie.",
+    "Je suis bien conscient que ça dépends du domaine d'application mais de manière générale il serait conseillé de se former sur ça à côté de mes études d'info? Ce sont des sujets que j'ai abordé mais jamais assez en profondeur où je pourrais me prétendre à l'aise avec.",
+    "Qu'est ce que vous en pensez?",
+    "Le dev lambda n'en aura pas besoin. Si tu fais du jeux vidéo, peut-être de la data/IA que tu en auras un peu.",
+    "Tout dépend de ce que tu veux faire. Les maths appliquée sont les math utilisables, donc si tu veux travailler sur des choses complexes ça peut être utile.",
+    "L'immense majorité du dev c'est de l'informatique de gestion et tu n'en as pas besoin par contre.",
+    "tu as parfois besoin des math pour le domaine fonctionnel de ton application, pas du tout pour la partie developpement.",
+    "en général le fonctionnel est porté par les équipes produit, pas par les tech, on va te donner les formules qui sont déjà appliqué dans leurs process pas encore automatisé, et faudra les implémenter dans l'appli.",
+    "non ça n'a pas d'importance à part en datascience/finance/3D. après être bon en math (et donc résolution de problème) peut être un plus pour un développeur. Et encore, même en finance de marché à part des log/exp y'a pas trop de maths si t'es pas quant.",
+    "sinon, si tu as des commentaires sur l'importance des maths appliqués, je veux bien les voir car je traîne régulièrement dessus et j'en vois très peu, presque tout le monde a la même opinion : c'est pas du tout nécessaire pour devenir dév.",
+    "Jusqu a maintenant une bonne maitrise du programme de terminale m'a toujours suffit meme si j'ai eu des maths dans ma formation y compris des maths financieres. Globalement je pense que si tu ne veux pas toucher aux maths c'est pas bien grave sauf pour de l'IA, stats ou RO. Peut etre jeux vidéos et quelques rares cas de dev finance genre dev quant",
+    "Les gars, vous calculez jamais la complexité de vos algos j'ai l'impression",
+    "C'est la différence entre développeur et développeur. Si tu es à l'aise en maths tu auras accès à des problèmes fonctionnels plus complexes, plus ambitieux, plus intéressants et parfois mieux rémunérés ... mais passystématiquement, les ingénieurs de recherche, et le jeu vidéo/animation 3D sont pas très bien payés dans ce pays. Des domaines pourtant très très matheux.",
+    "Les domaines de l'imagerie (généralement médicale), du pharmaceutique, traitement du signal (souvent militaire), crypto/sécu et IA ont beaucoup de fric à donner à des développeurs matheux.",
+    "Par contre il faut des preuves, des démos ou des crédits ECTS qui confirment tes capacités. Les MOOCs en ligne des vraies universités US sont acceptables. Tu seras jamais aussi bien payé que les X/ENS avec qui tu bosseras, mais tu peux bien ramasser par rapport à des devs qui ne savent pas ce qu'est une intégrale.",
+    "même si tu es pas à l'aise en math tu peux avoir des problèmes fonctionnels très complexes et ambitieux.. il y a des dévs à 150k+ qui ne font aucun math au quotidien en France, donc non pas du tout d'accord avec ton commentaire (surtout la dernière phrase)",
+    "jamais, même en milieu de carrière ?"
+  ]
+}
